@@ -29,6 +29,7 @@ export default async function page({ params: { searchTerm } }: Props) {
     const wikiData : Promise<SearchResult> = await getWikiResults(searchTerm);
     const data  = await wikiData;
     const results : Result[] | undefined = data?.query?.pages
+    const displayTerm = searchTerm.replaceAll("%20", " ");
 
     const content = (
         <main
@@ -37,7 +38,7 @@ export default async function page({ params: { searchTerm } }: Props) {
             {
                 results ? Object.values(results).map(result => {
                    return <Item key={result?.pageId} result={result} />
-                }) : <h2 className="p-2 text-xl">{`${searchTerm} Not Found`}</h2> 
+                }) : <h2 className="p-2 text-xl">{`${displayTerm} Not Found`}</h2> 
            }
 
         </main>
