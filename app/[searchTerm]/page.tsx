@@ -37,7 +37,7 @@ export default async function page({ params: { searchTerm } }: Props) {
         >
             {
                 results ? Object.values(results).map(result => {
-                   return <Item key={result?.pageId} result={result} />
+                   return <Item key={result?.pageid} result={result} />
                 }) : <h2 className="p-2 text-xl">{`${displayTerm} Not Found`}</h2> 
            }
 
